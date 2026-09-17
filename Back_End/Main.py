@@ -9,6 +9,8 @@ import numpy as np
 from PIL import Image
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
+from services.ais_service import find_nearby_vessels
+from services.attribution_service import attribute_vessels
 
 # ============================================================
 # PROJECT PATHS
@@ -30,7 +32,7 @@ from preprocessing.nisar_preprocess import preprocess_nisar_tile
 
 
 # ============================================================
-# FASTAPI
+# FASTAPI   
 # ============================================================
 
 app = FastAPI(
@@ -513,4 +515,85 @@ async def analyze_nisar(
 
             "message":
                 str(e)
+        }
+     # ============================================================
+# AIS ANALYSIS
+# ============================================================
+
+@app.post("/api/ais")
+async def analyze_ais(
+    latitude: float = Form(...),
+    longitude: float = Form(...),
+    radius_km: float = Form(50)
+):
+
+    try:
+
+        vessels = [
+            {
+                "mmsi": "123456789",
+                "name": "DEMO TANKER 01",
+                "type": "Tanker",
+                "latitude": 17.55,
+                "longitude": 78.52,
+                "speed": 12.4,
+                "course": 135
+            },
+            {
+                "mmsi": "987654321",
+                "name": "DEMO CARGO 01",
+                "type": "Cargo",
+                "latitude": 17.62,
+                "longitude": 78.60,
+                "speed": 9.8,
+                "course": 220
+            },
+            {
+                "mmsi": "555666777",
+                "name": "DEMO TANKER 02",
+                "type": "Tanker",
+                "latitude": 18.10,
+                "longitude": 79.10,
+                "speed": 14.2,
+                "course": 80
+            }
+        ]
+
+        nearby = find_nearby_vessels(
+            vessels,
+            latitude,
+            longitude,
+            radius_km
+        )
+
+        attributed_vessels = attribute_vessels(
+            nearby
+        )
+
+        return {
+            "status": "success",
+            "observation_location": {
+                "latitude": latitude,
+                "longitude": longitude
+            },
+
+            "radius_km": radius_km,
+
+            "vessel_count": len(attributed_vessels),
+
+            "vessels": attributed_vessels,
+
+            "attribution": {
+                "model": "XGBoost",
+                "status": "demo"
+            },
+
+            "data_source": "demo"
+        }
+
+    except Exception as e:
+
+        return {
+            "status": "error",
+            "message": str(e)
         }
