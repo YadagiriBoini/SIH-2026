@@ -20,11 +20,11 @@ def haversine_distance(
 
     R = 6371.0
 
-    lat1 = math.radians(lat1)
-    lat2 = math.radians(lat2)
-
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
+
+    lat1 = math.radians(lat1)
+    lat2 = math.radians(lat2)
 
     a = (
         math.sin(dlat / 2) ** 2
