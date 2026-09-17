@@ -1,5 +1,19 @@
 import numpy as np
+import shap
+
 from xgboost import XGBClassifier
+
+
+# ============================================================
+# FEATURE NAMES
+# ============================================================
+
+FEATURE_NAMES = [
+    "distance_km",
+    "speed",
+    "course",
+    "is_tanker"
+]
 
 
 # ============================================================
@@ -7,10 +21,6 @@ from xgboost import XGBClassifier
 # ============================================================
 
 def create_features(vessel):
-    """
-    Convert AIS vessel information into
-    numerical features for XGBoost.
-    """
 
     distance = vessel.get(
         "distance_km",
@@ -32,10 +42,9 @@ def create_features(vessel):
         "Unknown"
     )
 
-    # Tankers are especially relevant
-    # for this demo attribution system.
     is_tanker = (
-        1 if vessel_type.lower() == "tanker"
+        1
+        if vessel_type.lower() == "tanker"
         else 0
     )
 
@@ -54,8 +63,6 @@ def create_features(vessel):
 def create_demo_training_data():
 
     X = np.array([
-
-        # distance, speed, course, tanker
 
         [2, 10, 120, 1],
         [4, 12, 135, 1],
@@ -77,28 +84,11 @@ def create_demo_training_data():
 
     ], dtype=np.float32)
 
-    # Demo labels:
-    # 1 = candidate associated with spill
-    # 0 = unlikely candidate
-
     y = np.array([
-        1,
-        1,
-        1,
-        1,
-
-        0,
-        0,
-        0,
-        0,
-
-        1,
-        1,
-        0,
-
-        0,
-        0,
-        0
+        1, 1, 1, 1,
+        0, 0, 0, 0,
+        1, 1, 0,
+        0, 0, 0
     ])
 
     return X, y
@@ -129,6 +119,43 @@ def train_attribution_model():
 
 
 # ============================================================
+# SHAP EXPLANATION
+# ============================================================
+
+def explain_vessel(model, features):
+
+    feature_array = np.array(
+        [features],
+        dtype=np.float32
+    )
+
+    explainer = shap.TreeExplainer(
+        model
+    )
+
+    shap_values = explainer.shap_values(
+        feature_array
+    )
+
+    # SHAP value for this vessel
+    values = shap_values[0]
+
+    explanation = {}
+
+    for name, value in zip(
+        FEATURE_NAMES,
+        values
+    ):
+
+        explanation[name] = round(
+            float(value),
+            6
+        )
+
+    return explanation
+
+
+# ============================================================
 # ATTRIBUTE VESSELS
 # ============================================================
 
@@ -154,9 +181,10 @@ def attribute_vessels(vessels):
 
     results = []
 
-    for vessel, probability in zip(
+    for vessel, probability, feature_row in zip(
         vessels,
-        probabilities
+        probabilities,
+        features
     ):
 
         result = vessel.copy()
@@ -164,6 +192,14 @@ def attribute_vessels(vessels):
         result["attribution_score"] = round(
             float(probability),
             4
+        )
+
+        # SHAP explanation
+        result["shap_explanation"] = (
+            explain_vessel(
+                model,
+                feature_row
+            )
         )
 
         results.append(result)
