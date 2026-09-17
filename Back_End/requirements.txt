@@ -1,5 +1,9 @@
 fastapi
 uvicorn
 python-multipart
+torch==1.13.1
+numpy==1.21.6
+Pillow==9.5.0
+h5py==3.8.0
 shap==0.42.1
 xgboost==1.6.2

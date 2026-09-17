@@ -66,18 +66,23 @@ MODEL_PATH = os.path.join(
     "best_model.pth"
 )
 
-model = UNet()
+model = None
 
-model.load_state_dict(
-    torch.load(
-        MODEL_PATH,
-        map_location="cpu"
+if os.path.exists(MODEL_PATH):
+    model = UNet()
+    model.load_state_dict(
+        torch.load(
+            MODEL_PATH,
+            map_location="cpu"
+        )
     )
-)
-
-model.eval()
-
-print("U-Net model loaded successfully")
+    model.eval()
+    print("U-Net model loaded successfully")
+else:
+    print(
+        "U-Net model weights not found; health endpoints are available, "
+        "but image analysis requires best_model.pth"
+    )
 
 
 # ============================================================
@@ -115,6 +120,12 @@ async def analyze_spill(
 ):
 
     try:
+
+        if model is None:
+            return {
+                "status": "error",
+                "message": "Model weights are unavailable; add best_model.pth"
+            }
 
         # ----------------------------------------
         # READ IMAGE
@@ -289,6 +300,12 @@ async def analyze_nisar(
 ):
 
     try:
+
+        if model is None:
+            return {
+                "status": "error",
+                "message": "Model weights are unavailable; add best_model.pth"
+            }
 
         # ----------------------------------------
         # NISAR FILE
