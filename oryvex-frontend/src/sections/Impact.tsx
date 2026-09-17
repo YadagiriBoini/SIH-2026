@@ -42,28 +42,28 @@ const USE_CASES = [
     full: 'Indian National Centre for Ocean Information Services',
     desc: 'Integrates directly with INCOIS ocean current forecasting for drift model inputs.',
     icon: '🌊',
-    color: '#00D4FF',
+    color: '#0086A8',
   },
   {
     org: 'Indian Coast Guard',
     full: 'Maritime Enforcement Agency',
     desc: 'Provides actionable attribution reports with SHAP evidence for legal enforcement action.',
     icon: '🚨',
-    color: '#FF3B3B',
+    color: '#D6303B',
   },
   {
     org: 'MoPNG',
     full: 'Ministry of Petroleum & Natural Gas',
     desc: 'Monitors offshore installation proximity incidents and platform leak attribution.',
     icon: '🛢️',
-    color: '#FF9F00',
+    color: '#B36B00',
   },
   {
     org: 'ISRO / NRSC',
     full: 'National Remote Sensing Centre',
     desc: 'Provides a downstream application layer for Bhoonidhi satellite data products.',
     icon: '🛰️',
-    color: '#00E87A',
+    color: '#0E8F5C',
   },
 ];
 
@@ -115,10 +115,10 @@ export default function Impact() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                   {[
-                    { zone: 'Arabian Sea', length: '75%', color: '#00D4FF' },
-                    { zone: 'Bay of Bengal', length: '85%', color: '#00E87A' },
-                    { zone: 'Andaman Sea', length: '60%', color: '#FF9F00' },
-                    { zone: 'Lakshadweep Sea', length: '50%', color: '#A78BFA' },
+                    { zone: 'Arabian Sea', length: '75%', color: '#0086A8' },
+                    { zone: 'Bay of Bengal', length: '85%', color: '#0E8F5C' },
+                    { zone: 'Andaman Sea', length: '60%', color: '#B36B00' },
+                    { zone: 'Lakshadweep Sea', length: '50%', color: '#7C5CD6' },
                   ].map((z) => (
                     <div key={z.zone} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                       <span className="font-mono" style={{ fontSize: 11, width: 140, color: 'var(--color-text-dim)' }}>{z.zone}</span>
@@ -157,10 +157,10 @@ export default function Impact() {
                   <text x="100" y="118" textAnchor="middle" fill="rgba(0,212,255,0.35)" fontSize="7" fontFamily="IBM Plex Mono">2.37M km²</text>
                   {/* Blip dots for incidents */}
                   {[
-                    { cx: 68, cy: 80, color: '#FF3B3B' },
-                    { cx: 125, cy: 95, color: '#FF9F00' },
-                    { cx: 140, cy: 140, color: '#FF3B3B' },
-                    { cx: 55, cy: 130, color: '#FF9F00' },
+                    { cx: 68, cy: 80, color: '#D6303B' },
+                    { cx: 125, cy: 95, color: '#B36B00' },
+                    { cx: 140, cy: 140, color: '#D6303B' },
+                    { cx: 55, cy: 130, color: '#B36B00' },
                   ].map((b, i) => (
                     <g key={i}>
                       <circle cx={b.cx} cy={b.cy} r="5" fill={b.color} opacity="0.2" />

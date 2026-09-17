@@ -61,25 +61,25 @@ const DIFFERENTIATORS = [
     title: 'Backward Drift Ensemble',
     desc: '100 Lagrangian particle trajectories run backward in time using INCOIS ocean currents + ERA5 wind — not a single deterministic path.',
     icon: '🌊',
-    color: '#00D4FF',
+    color: '#0086A8',
   },
   {
     title: 'SHAP Explainability Layer',
     desc: 'Attribution decisions are not a black box. Every vessel ranking comes with a per-feature SHAP breakdown that courts and agencies can verify.',
     icon: '📊',
-    color: '#00E87A',
+    color: '#0E8F5C',
   },
   {
     title: 'OpenOil Weathering Model',
     desc: 'Accounts for oil evaporation, emulsification, and spreading over time — critical for accurate backward trajectory computation.',
     icon: '⚗️',
-    color: '#FF9F00',
+    color: '#B36B00',
   },
   {
     title: 'End-to-End Automation',
     desc: 'No human in the loop required for detection or attribution. Analysts receive ranked results + evidence packages, not raw satellite data.',
     icon: '⚡',
-    color: '#A78BFA',
+    color: '#7C5CD6',
   },
 ];
 

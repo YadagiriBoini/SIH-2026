@@ -6,31 +6,31 @@
 
 :root {
   /* Colors */
-  --color-bg:         #050D1A;
-  --color-bg-deep:    #030810;
-  --color-surface:    #0A1628;
-  --color-surface-2:  #0F1E35;
-  --color-surface-3:  #132338;
-  --color-border:     #1A3A5C;
-  --color-border-dim: #0F2540;
+  --color-bg:         #FFFFFF;
+  --color-bg-deep:    #F3F6FA;
+  --color-surface:    #FFFFFF;
+  --color-surface-2:  #F3F6FA;
+  --color-surface-3:  #E8EDF3;
+  --color-border:     #D8E1EC;
+  --color-border-dim: #E9EEF4;
 
-  --color-primary:   #00D4FF;
-  --color-primary-dim: #00A0CC;
-  --color-primary-glow: rgba(0, 212, 255, 0.15);
+  --color-primary:   #0086A8;
+  --color-primary-dim: #006883;
+  --color-primary-glow: rgba(0, 134, 168, 0.12);
 
-  --color-danger:    #FF3B3B;
-  --color-danger-dim: #CC2020;
-  --color-danger-glow: rgba(255, 59, 59, 0.15);
+  --color-danger:    #D6303B;
+  --color-danger-dim: #B0232D;
+  --color-danger-glow: rgba(214, 48, 59, 0.12);
 
-  --color-amber:     #FF9F00;
-  --color-amber-glow: rgba(255, 159, 0, 0.15);
+  --color-amber:     #B36B00;
+  --color-amber-glow: rgba(179, 107, 0, 0.12);
 
-  --color-success:   #00E87A;
-  --color-success-glow: rgba(0, 232, 122, 0.1);
+  --color-success:   #0E8F5C;
+  --color-success-glow: rgba(14, 143, 92, 0.1);
 
-  --color-text:      #D6EEFF;
-  --color-text-dim:  #7A9EBF;
-  --color-text-muted:#3A5A7A;
+  --color-text:      #101E2C;
+  --color-text-dim:  #435870;
+  --color-text-muted:#7C8FA3;
 
   /* Typography */
   --font-display: 'Space Grotesk', sans-serif;
@@ -89,8 +89,8 @@ body {
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--color-bg-deep); }
+::-webkit-scrollbar-thumb { background: #C3CEDB; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-primary-dim); }
 
 /* ── Typography ── */
@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(0, 212, 255, 0.25);
+  background: rgba(0, 134, 168, 0.18);
   color: var(--color-text);
 }
 
@@ -247,11 +247,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
   background: var(--color-primary);
-  color: var(--color-bg-deep);
+  color: #FFFFFF;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 24px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 134, 168, 0.35);
   transform: translateY(-1px);
 }
 
@@ -272,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-danger:hover {
-  box-shadow: 0 0 24px rgba(255, 59, 59, 0.4);
+  box-shadow: 0 4px 20px rgba(214, 48, 59, 0.35);
   transform: translateY(-1px);
 }
 
@@ -371,7 +371,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Gradient text ── */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #00FFCC 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #00A884 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -430,10 +430,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Coordinate display ── */
+/* Used only inside the dark radar instrument panel, so it stays a fixed
+   light tone rather than following the page-level (light-mode) text colors. */
 .coord {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-text-dim);
+  color: rgba(200, 225, 245, 0.8);
   letter-spacing: 0.05em;
 }
 

@@ -19,17 +19,17 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 65% 40%, rgba(0, 50, 100, 0.45) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0, 20, 50, 0.3) 0%, transparent 60%),
-    linear-gradient(180deg, #030810 0%, #050D1A 40%, #060F1F 100%);
+    radial-gradient(ellipse 80% 60% at 65% 40%, rgba(0, 134, 168, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0, 134, 168, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #F6F9FC 40%, #F1F5F9 100%);
 }
 
 .hero__bg-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 134, 168, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 134, 168, 0.06) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, black 30%, transparent 70%);
 }
@@ -37,7 +37,7 @@
 .hero__bg-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(3, 8, 16, 0.8) 100%);
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(190, 205, 220, 0.35) 100%);
 }
 
 .hero__orbit {

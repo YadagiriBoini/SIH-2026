@@ -64,7 +64,7 @@
 .howitworks__stage:hover,
 .howitworks__stage--active {
   border-color: var(--stage-color, var(--color-primary));
-  box-shadow: 0 0 24px color-mix(in srgb, var(--stage-color, #00D4FF) 15%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--stage-color, #0086A8) 15%, transparent);
   background: var(--color-surface-2);
 }
 
@@ -204,7 +204,7 @@
 
 .howitworks__flow-fill {
   height: 100%;
-  background: linear-gradient(to right, #00D4FF, #00E87A, #FF9F00, #FF3B3B);
+  background: linear-gradient(to right, #0086A8, #0E8F5C, #B36B00, #D6303B);
   transform-origin: left;
 }
 

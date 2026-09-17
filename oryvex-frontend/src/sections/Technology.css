@@ -146,7 +146,7 @@
 
 .technology__item:hover {
   border-color: var(--item-color, var(--color-primary));
-  box-shadow: 0 0 24px color-mix(in srgb, var(--item-color, #00D4FF) 12%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--item-color, #0086A8) 12%, transparent);
 }
 
 .technology__item-header {

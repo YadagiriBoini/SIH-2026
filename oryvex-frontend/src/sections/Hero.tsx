@@ -153,16 +153,16 @@ export default function Hero() {
               <span className="font-mono coord">LON 72°24'E</span>
             </div>
             <div className="hero__radar-label bottom-left">
-              <div className="pulse-dot" />
-              <span className="font-mono" style={{ fontSize: 10, color: 'var(--color-danger)' }}>OIL SLICK DETECTED</span>
+              <div className="pulse-dot" style={{ background: '#FF3B3B' }} />
+              <span className="font-mono" style={{ fontSize: 10, color: '#FF6B6B' }}>OIL SLICK DETECTED</span>
             </div>
             <div className="hero__radar-label bottom-right">
               <span className="font-mono coord">RANGE 80 NM</span>
             </div>
             {/* Status bar */}
             <div className="hero__radar-status">
-              <span className="pulse-dot pulse-dot-primary" style={{ width: 6, height: 6 }} />
-              <span className="font-mono" style={{ fontSize: 10, color: 'var(--color-primary)', letterSpacing: '0.1em' }}>
+              <span className="pulse-dot pulse-dot-primary" style={{ width: 6, height: 6, background: '#00D4FF' }} />
+              <span className="font-mono" style={{ fontSize: 10, color: '#4DD8FF', letterSpacing: '0.1em' }}>
                 SCANNING · NISAR PASS 04:23 UTC
               </span>
             </div>

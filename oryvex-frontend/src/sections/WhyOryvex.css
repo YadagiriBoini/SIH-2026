@@ -71,7 +71,7 @@
   font-size: 10px;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
-  background: rgba(10, 22, 40, 0.5);
+  background: var(--color-surface-2);
 }
 
 .why__td--traditional {
@@ -125,7 +125,7 @@
 
 .why__diff-card:hover {
   border-color: var(--diff-color, var(--color-primary));
-  box-shadow: 0 0 24px color-mix(in srgb, var(--diff-color, #00D4FF) 10%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--diff-color, #0086A8) 10%, transparent);
 }
 
 .why__diff-icon {

@@ -5,7 +5,7 @@ export const TECH_STACK = [
       {
         name: 'NISAR SAR',
         logo: '🛰️',
-        color: '#00D4FF',
+        color: '#0086A8',
         description: 'NASA-ISRO SAR mission — L-Band + S-Band imagery',
         why: 'Penetrates clouds and darkness; ideal for ocean oil film detection',
         badge: 'Primary Sensor',
@@ -13,7 +13,7 @@ export const TECH_STACK = [
       {
         name: 'Sentinel-1',
         logo: '📡',
-        color: '#00A0CC',
+        color: '#006883',
         description: 'ESA C-Band SAR satellite',
         why: 'Provides temporal coverage when NISAR pass is unavailable',
         badge: 'Backup Sensor',
@@ -26,7 +26,7 @@ export const TECH_STACK = [
       {
         name: 'U-Net',
         logo: '🧠',
-        color: '#00E87A',
+        color: '#0E8F5C',
         description: 'Semantic segmentation neural network',
         why: 'Pixel-level classification of oil slick vs. ocean background',
         badge: 'Primary Model',
@@ -34,7 +34,7 @@ export const TECH_STACK = [
       {
         name: 'XGBoost',
         logo: '⚡',
-        color: '#FF9F00',
+        color: '#B36B00',
         description: 'Gradient-boosted ensemble classifier',
         why: 'Filters lookalikes (algae, ship wakes, rain cells) with high precision',
         badge: 'Filter Model',
@@ -47,7 +47,7 @@ export const TECH_STACK = [
       {
         name: 'OpenDrift',
         logo: '🌊',
-        color: '#00D4FF',
+        color: '#0086A8',
         description: 'Lagrangian particle drift simulation',
         why: 'Backward-in-time trajectory to locate spill source point',
         badge: 'Drift Engine',
@@ -55,7 +55,7 @@ export const TECH_STACK = [
       {
         name: 'OpenOil',
         logo: '🛢️',
-        color: '#FF3B3B',
+        color: '#D6303B',
         description: 'Oil weathering & fate model',
         why: 'Accounts for evaporation, emulsification, spreading dynamics',
         badge: 'Fate Model',
@@ -68,7 +68,7 @@ export const TECH_STACK = [
       {
         name: 'AIS Data',
         logo: '🚢',
-        color: '#FF9F00',
+        color: '#B36B00',
         description: 'Automatic Identification System vessel tracks',
         why: 'Historical vessel position/speed/heading for correlation',
         badge: 'Vessel DB',
@@ -76,7 +76,7 @@ export const TECH_STACK = [
       {
         name: 'SHAP',
         logo: '📊',
-        color: '#00E87A',
+        color: '#0E8F5C',
         description: 'SHapley Additive exPlanations',
         why: 'Makes attribution decisions explainable and legally defensible',
         badge: 'XAI Layer',
@@ -89,7 +89,7 @@ export const TECH_STACK = [
       {
         name: 'FastAPI / Python',
         logo: '⚙️',
-        color: '#A78BFA',
+        color: '#7C5CD6',
         description: 'High-performance async API server',
         why: 'Serves AI inference results and AIS queries with low latency',
         badge: 'Backend',
@@ -97,7 +97,7 @@ export const TECH_STACK = [
       {
         name: 'PostgreSQL + PostGIS',
         logo: '🗄️',
-        color: '#60A5FA',
+        color: '#3B7DDB',
         description: 'Geospatial relational database',
         why: 'Stores SAR geometries, vessel tracks, spill polygons with spatial indexing',
         badge: 'Database',
@@ -105,7 +105,7 @@ export const TECH_STACK = [
       {
         name: 'React + TypeScript',
         logo: '⚛️',
-        color: '#00D4FF',
+        color: '#0086A8',
         description: 'Modern reactive frontend framework',
         why: 'Interactive visualization of complex geospatial and AI outputs',
         badge: 'Frontend',
@@ -123,7 +123,7 @@ export const PIPELINE_STAGES = [
     description: 'NISAR/Sentinel-1 SAR imagery ingested via Bhoonidhi/Copernicus APIs. L-Band imagery preprocessed with radiometric calibration and speckle filtering.',
     tech: ['NISAR', 'Sentinel-1', 'Bhoonidhi API'],
     icon: '🛰️',
-    color: '#00D4FF',
+    color: '#0086A8',
     outputLabel: 'Calibrated SAR scene (GeoTIFF)',
   },
   {
@@ -134,7 +134,7 @@ export const PIPELINE_STAGES = [
     description: 'Trained U-Net architecture performs pixel-level binary classification. Model trained on labeled SAR scenes from ITOPF and HELCOM databases. F1 > 0.87.',
     tech: ['PyTorch', 'U-Net', 'CUDA'],
     icon: '🧠',
-    color: '#00E87A',
+    color: '#0E8F5C',
     outputLabel: 'Oil slick mask + polygon GeoJSON',
   },
   {
@@ -145,7 +145,7 @@ export const PIPELINE_STAGES = [
     description: 'XGBoost classifier uses 14 features (NRCS statistics, texture, wind speed, proximity to shipping lanes) to reject lookalikes with 91% precision.',
     tech: ['XGBoost', 'Feature Engineering', 'ERA5 Wind'],
     icon: '⚡',
-    color: '#FF9F00',
+    color: '#B36B00',
     outputLabel: 'Validated spill polygon + confidence score',
   },
   {
@@ -156,7 +156,7 @@ export const PIPELINE_STAGES = [
     description: 'Ensemble of 100 Lagrangian particles released at detected spill polygon. Backward drift simulation (0–72 hrs) using INCOIS ocean current + ERA5 wind data.',
     tech: ['OpenDrift', 'OpenOil', 'INCOIS', 'ERA5'],
     icon: '🌊',
-    color: '#00D4FF',
+    color: '#0086A8',
     outputLabel: 'Probable spill origin zone (GeoJSON)',
   },
   {
@@ -167,7 +167,7 @@ export const PIPELINE_STAGES = [
     description: 'AIS vessel tracks correlated with origin zone using spatiotemporal analysis. XGBoost ranks vessels by attribution probability. SHAP values explain each decision.',
     tech: ['AIS API', 'XGBoost', 'SHAP', 'PostGIS'],
     icon: '🚢',
-    color: '#FF3B3B',
+    color: '#D6303B',
     outputLabel: 'Top-3 vessels + SHAP attribution report',
   },
 ];

@@ -512,7 +512,7 @@ export default function Demo() {
                     </div>
                     <ShapChart
                       shapValues={scenario.vessels[selectedVessel].shapValues}
-                      color={vesselColors[selectedVessel].replace('var(--color-danger)', '#FF3B3B').replace('var(--color-amber)', '#FF9F00').replace('var(--color-text-dim)', '#5A7A9A')}
+                      color={vesselColors[selectedVessel].replace('var(--color-danger)', '#D6303B').replace('var(--color-amber)', '#B36B00').replace('var(--color-text-dim)', '#48607A')}
                     />
                   </div>
 

@@ -13,6 +13,9 @@ import './LiveAnalysisPanel.css';
 type ApiStatus = 'checking' | 'online' | 'offline';
 
 const VESSEL_COLORS = ['var(--color-danger)', 'var(--color-amber)', 'var(--color-primary)', 'var(--color-text-dim)'];
+// Brighter variants for markers on the dark LiveMap panel, where the page's
+// (light-mode) text colors would be too low-contrast to read.
+const MAP_VESSEL_COLORS = ['#FF6B6B', '#FFB84D', '#4DD8FF', '#9AB4C9'];
 
 const FEATURE_LABELS: Record<string, string> = {
   distance_km: 'Distance to spill (km)',
@@ -327,7 +330,7 @@ export default function LiveAnalysisPanel() {
                   name: v.name,
                   lat: v.latitude,
                   lon: v.longitude,
-                  color: VESSEL_COLORS[i % VESSEL_COLORS.length],
+                  color: MAP_VESSEL_COLORS[i % MAP_VESSEL_COLORS.length],
                   rank: i + 1,
                 }))}
               />
