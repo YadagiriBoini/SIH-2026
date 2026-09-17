@@ -1,0 +1,121 @@
+.impact {
+  background: var(--color-bg);
+  position: relative;
+}
+
+.impact__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.impact__bg-left {
+  position: absolute;
+  left: -15%;
+  top: 20%;
+  width: 40%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(0,232,122,0.03) 0%, transparent 70%);
+}
+
+.impact__bg-right {
+  position: absolute;
+  right: -10%;
+  top: 10%;
+  width: 35%;
+  height: 50%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.04) 0%, transparent 70%);
+}
+
+.impact__headline {
+  max-width: 680px;
+  margin-bottom: var(--space-4);
+}
+
+.impact__note {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-10);
+}
+
+.impact__stats {
+  margin-bottom: var(--space-10);
+}
+
+.impact__stat {
+  text-align: center;
+  padding: var(--space-6);
+  cursor: default;
+}
+
+.impact__stat-label {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: var(--space-3);
+}
+
+.impact__stat-sub {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  letter-spacing: 0.04em;
+}
+
+.impact__coverage {
+  margin-bottom: var(--space-4);
+}
+
+.impact__coverage-inner {
+  padding: var(--space-8);
+}
+
+.impact__india-eez {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* Use cases */
+.impact__usecases {
+  margin-top: var(--space-6);
+}
+
+.impact__usecase {
+  cursor: default;
+}
+
+.impact__usecase-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.impact__usecase-org {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.impact__usecase-full {
+  font-size: 9px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.impact__usecase-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .impact__coverage-inner {
+    flex-direction: column;
+  }
+}

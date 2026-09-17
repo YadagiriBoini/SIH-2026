@@ -1,0 +1,231 @@
+.howitworks {
+  background: var(--color-bg-deep);
+  position: relative;
+}
+
+.howitworks__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.howitworks__bg-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 80px;
+}
+
+.howitworks__headline {
+  max-width: 720px;
+  margin-bottom: var(--space-6);
+}
+
+.howitworks__intro {
+  font-size: 1rem;
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-12);
+}
+
+/* Pipeline */
+.howitworks__pipeline {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.howitworks__stage-wrapper {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* Stage card */
+.howitworks__stage {
+  flex: 1;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.howitworks__stage:hover,
+.howitworks__stage--active {
+  border-color: var(--stage-color, var(--color-primary));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--stage-color, #00D4FF) 15%, transparent);
+  background: var(--color-surface-2);
+}
+
+.howitworks__stage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--stage-color, var(--color-primary));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.howitworks__stage:hover::before,
+.howitworks__stage--active::before {
+  opacity: 1;
+}
+
+.howitworks__stage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.howitworks__stage-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.howitworks__stage-icon {
+  font-size: 1.4rem;
+}
+
+.howitworks__stage-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.howitworks__stage-subtitle {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}
+
+.howitworks__stage-expand {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-top: auto;
+  align-self: flex-end;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+.howitworks__stage:hover .howitworks__stage-expand,
+.howitworks__stage--active .howitworks__stage-expand {
+  border-color: var(--stage-color, var(--color-primary));
+  color: var(--stage-color, var(--color-primary));
+}
+
+.howitworks__stage-output {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-dim);
+}
+
+/* Connector */
+.howitworks__connector {
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.howitworks__connector-fill {
+  width: 2px;
+  flex: 1;
+  transform-origin: top;
+  border-radius: 1px;
+}
+
+.howitworks__connector-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Detail panel */
+.howitworks__detail {
+  overflow: hidden;
+  grid-column: 1 / -1;
+}
+
+.howitworks__detail-inner {
+  border: 1px solid;
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  background: var(--color-surface-2);
+  margin-top: var(--space-2);
+}
+
+/* Flow bar */
+.howitworks__flow-note {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.howitworks__flow-bar {
+  height: 2px;
+  background: var(--color-border);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.howitworks__flow-fill {
+  height: 100%;
+  background: linear-gradient(to right, #00D4FF, #00E87A, #FF9F00, #FF3B3B);
+  transform-origin: left;
+}
+
+@media (max-width: 900px) {
+  .howitworks__pipeline {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .howitworks__stage-wrapper {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .howitworks__connector {
+    width: 100%;
+    height: 20px;
+    flex-direction: row;
+  }
+  .howitworks__connector-fill {
+    width: auto;
+    height: 2px;
+    flex: 1;
+    transform-origin: left;
+  }
+}

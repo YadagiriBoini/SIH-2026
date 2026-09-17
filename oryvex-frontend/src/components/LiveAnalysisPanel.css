@@ -1,0 +1,126 @@
+.live-analysis {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+}
+
+.live-analysis__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.live-analysis__status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.live-analysis__intro {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+  max-width: 640px;
+  margin-bottom: var(--space-5);
+}
+
+.live-analysis__form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  align-items: end;
+}
+
+.live-analysis__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.live-analysis__field--file {
+  grid-column: 1 / -1;
+}
+
+.live-analysis__field label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.live-analysis__field input,
+.live-analysis__field select {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+.live-analysis__field input:focus,
+.live-analysis__field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.live-analysis__filename {
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+.live-analysis__submit {
+  grid-column: 1 / -1;
+}
+
+.live-analysis__error {
+  margin-top: var(--space-4);
+  display: inline-flex;
+}
+
+.live-analysis__result {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-dim);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.live-analysis__result-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.live-analysis__mask {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.live-analysis__mask img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-dim);
+  image-rendering: pixelated;
+}
+
+@media (max-width: 720px) {
+  .live-analysis__form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .live-analysis__result {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .live-analysis__form {
+    grid-template-columns: 1fr;
+  }
+}
