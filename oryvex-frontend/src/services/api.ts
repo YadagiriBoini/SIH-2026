@@ -56,3 +56,41 @@ export async function analyzeSpill(params: AnalyzeSpillParams): Promise<AnalyzeS
   const { data } = await apiClient.post<AnalyzeSpillResponse>('/api/analyze', formData);
   return data;
 }
+
+export interface AttributedVessel {
+  mmsi: string;
+  name: string;
+  type: string;
+  latitude: number;
+  longitude: number;
+  speed: number;
+  course: number;
+  distance_km: number;
+  attribution_score: number;
+  shap_explanation: Record<string, number>;
+}
+
+export interface NearbyVesselsResponse {
+  status: 'success' | 'error';
+  message?: string;
+  observation_location?: { latitude: number; longitude: number };
+  radius_km?: number;
+  vessel_count?: number;
+  vessels?: AttributedVessel[];
+  attribution?: { model: string; status: string };
+  data_source?: string;
+}
+
+export async function getNearbyVessels(
+  latitude: number,
+  longitude: number,
+  radiusKm: number
+): Promise<NearbyVesselsResponse> {
+  const formData = new FormData();
+  formData.append('latitude', String(latitude));
+  formData.append('longitude', String(longitude));
+  formData.append('radius_km', String(radiusKm));
+
+  const { data } = await apiClient.post<NearbyVesselsResponse>('/api/ais', formData);
+  return data;
+}

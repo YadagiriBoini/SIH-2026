@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DEMO_SCENARIOS, type SpillScenario } from '../data/demoScenarios';
 import LiveAnalysisPanel from '../components/LiveAnalysisPanel';
+import ShapChart from '../components/ShapChart';
 import './Demo.css';
 
 const PIPELINE_STEPS = ['SAR Ingest', 'U-Net Detect', 'XGBoost Filter', 'OpenDrift Model', 'AIS Correlate', 'SHAP Rank'];
@@ -208,33 +209,6 @@ function OceanMap({ scenario }: { scenario: SpillScenario }) {
       aria-label={`Ocean map showing oil spill location and vessel tracks for ${scenario.name}`}
       role="img"
     />
-  );
-}
-
-// SHAP bar chart component
-function ShapChart({ vessel, color }: { vessel: typeof DEMO_SCENARIOS[0]['vessels'][0]; color: string }) {
-  const maxVal = Math.max(...vessel.shapValues.map(v => v.value));
-  return (
-    <div className="shap__chart">
-      <div className="font-mono" style={{ fontSize: 10, color: 'var(--color-text-muted)', letterSpacing: '0.1em', marginBottom: 8 }}>
-        SHAP ATTRIBUTION FACTORS
-      </div>
-      {vessel.shapValues.map((sv) => (
-        <div key={sv.feature} className="shap__row">
-          <span className="shap__label font-mono">{sv.feature}</span>
-          <div className="shap__bar-track">
-            <motion.div
-              className="shap__bar-fill"
-              style={{ background: color }}
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: sv.value / maxVal }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-            />
-          </div>
-          <span className="shap__val font-mono" style={{ color }}>{(sv.value * 100).toFixed(0)}%</span>
-        </div>
-      ))}
-    </div>
   );
 }
 
@@ -537,7 +511,7 @@ export default function Demo() {
                       <span className="tag tag-primary">SHAP</span>
                     </div>
                     <ShapChart
-                      vessel={scenario.vessels[selectedVessel]}
+                      shapValues={scenario.vessels[selectedVessel].shapValues}
                       color={vesselColors[selectedVessel].replace('var(--color-danger)', '#FF3B3B').replace('var(--color-amber)', '#FF9F00').replace('var(--color-text-dim)', '#5A7A9A')}
                     />
                   </div>
