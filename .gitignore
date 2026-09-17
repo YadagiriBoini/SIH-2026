@@ -1,0 +1,8 @@
+Back_End/venv/
+Data/oil_spill_dataset/
+Data/Satellite/NISAR_.h5
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.pth
