@@ -18,8 +18,6 @@ export interface AnalyzePrediction {
   spill_pixels: number;
   total_pixels: number;
   spill_percentage: number;
-  centroid_offset_x: number;
-  centroid_offset_y: number;
   predicted_mask: string;
 }
 

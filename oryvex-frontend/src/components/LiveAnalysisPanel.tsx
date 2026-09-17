@@ -302,12 +302,6 @@ export default function LiveAnalysisPanel() {
             )}
           </div>
 
-          <p className="live-analysis__empty-note" style={{ marginBottom: 'var(--space-4)' }}>
-            The dashed line is a drift-origin estimate derived from where the spill mass sits within{' '}
-            <em>this image's</em> predicted mask (its pixel centroid, offset from image center) — not a
-            physics-based OpenDrift simulation. It will shift with the actual detection, not stay fixed.
-          </p>
-
           {vesselsLoading && (
             <div className="live-analysis__vessels-loading font-mono">
               <span className="demo__spinner-sm" aria-hidden="true" /> Scoring nearby vessels...
@@ -318,14 +312,19 @@ export default function LiveAnalysisPanel() {
             <div className="tag tag-danger live-analysis__error">⚠ {vesselError}</div>
           )}
 
-          {!vesselsLoading && (
+          {!vesselsLoading && !vesselError && vessels.length === 0 && (
+            <p className="live-analysis__empty-note">
+              No vessels found within {radiusKm} km. The backend's AIS feed is demo data anchored near
+              Hyderabad's coast — try a larger radius or a location close to it.
+            </p>
+          )}
+
+          {vessels.length > 0 && (
             <div className="live-analysis__vessels-grid">
               <LiveMap
                 centerLat={parseFloat(latitude)}
                 centerLon={parseFloat(longitude)}
                 spillPercentage={result.prediction.spill_percentage}
-                driftOriginLat={parseFloat(latitude) - result.prediction.centroid_offset_y * 0.12}
-                driftOriginLon={parseFloat(longitude) + result.prediction.centroid_offset_x * 0.12}
                 vessels={vessels.map((v, i) => ({
                   id: v.mmsi,
                   name: v.name,
@@ -337,12 +336,6 @@ export default function LiveAnalysisPanel() {
               />
 
               <div className="live-analysis__vessel-list">
-                {vessels.length === 0 && !vesselError && (
-                  <p className="live-analysis__empty-note">
-                    No vessels found within {radiusKm} km. The backend's AIS feed is demo data anchored near
-                    Hyderabad's coast — try a larger radius or a location close to it.
-                  </p>
-                )}
                 {vessels.map((v, i) => (
                   <button
                     key={v.mmsi}
