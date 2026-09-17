@@ -200,6 +200,34 @@ async def analyze_spill(
         )
 
         # ----------------------------------------
+        # SPILL MASK CENTROID
+        # (used by the frontend to derive a
+        # per-image drift-origin point, instead of
+        # always drawing from the same fixed spot)
+        # ----------------------------------------
+
+        mask_height, mask_width = prediction.shape
+
+        if spill_pixels > 0:
+
+            ys, xs = np.where(prediction == 1)
+
+            centroid_offset_x = round(
+                float((xs.mean() - mask_width / 2) / (mask_width / 2)),
+                4
+            )
+
+            centroid_offset_y = round(
+                float((ys.mean() - mask_height / 2) / (mask_height / 2)),
+                4
+            )
+
+        else:
+
+            centroid_offset_x = 0.0
+            centroid_offset_y = 0.0
+
+        # ----------------------------------------
         # CREATE MASK IMAGE
         # ----------------------------------------
 
@@ -269,6 +297,12 @@ async def analyze_spill(
                         spill_percentage,
                         2
                     ),
+
+                "centroid_offset_x":
+                    centroid_offset_x,
+
+                "centroid_offset_y":
+                    centroid_offset_y,
 
                 "predicted_mask":
                     mask_base64
