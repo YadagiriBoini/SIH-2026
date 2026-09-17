@@ -203,11 +203,12 @@ async def analyze_spill(
         # CREATE MASK IMAGE
         # ----------------------------------------
 
-        mask_image = (
-            prediction * 255
-        ).astype(
-            np.uint8
+        mask_image = np.zeros(
+            (*prediction.shape, 3),
+            dtype=np.uint8
         )
+        mask_image[prediction == 0] = [0, 0, 255]
+        mask_image[prediction == 1] = [255, 0, 0]
 
         mask_pil = Image.fromarray(
             mask_image
@@ -441,11 +442,12 @@ async def analyze_nisar(
         # CREATE MASK
         # ----------------------------------------
 
-        mask_image = (
-            prediction * 255
-        ).astype(
-            np.uint8
+        mask_image = np.zeros(
+            (*prediction.shape, 3),
+            dtype=np.uint8
         )
+        mask_image[valid_mask & (prediction == 0)] = [0, 0, 255]
+        mask_image[valid_mask & (prediction == 1)] = [255, 0, 0]
 
         mask_pil = Image.fromarray(
             mask_image
